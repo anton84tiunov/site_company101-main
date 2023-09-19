@@ -1,0 +1,30 @@
+<link type='text/css' rel="stylesheet" href="{{url_for('static',filename='my_slider/slider.css')}}">
+
+
+<script>
+    var slider_images = JSON.parse('{{ slider_images|tojson|safe }}');
+    var path_to_slider = JSON.parse('{{ path_to_slider|tojson|safe }}');
+</script>
+
+
+<div id="slider_container">
+    <div id="slider_cards">
+        <div class="slider_card" id="slider_card_left">
+            <div class="slider_card_img" id="slider_card_left_img"></div>
+        </div>
+        <div class="slider_card" id="slider_card_focus">
+            <div class="slider_card_img" id="slider_card_focus_img"></div>
+        </div>
+        <div class="slider_card" id="slider_card_right">
+            <div class="slider_card_img" id="slider_card_right_img"></div>
+        </div>
+
+    </div>
+    <!-- <div id="btn_left_slider">left</div>
+    <div id="btn_right_slider">right</div> -->
+</div>
+
+
+<script type='text/javascript' src="{{url_for('static',filename='my_slider/slider.js')}}"></script>
+
+

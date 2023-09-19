@@ -1,0 +1,49 @@
+{% extends "base/base.html" %}
+{% block head %}
+     {{ super() }}
+    <!-- <link type='text/css' rel="stylesheet" href="{{url_for('static',filename='slider/itc-slider.css')}}"> -->
+    <link type='text/css' rel="stylesheet" href="{{url_for('static',filename='home/css/home.css')}}">
+    <title>Главная</title>
+ 
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+
+    <script type='text/javascript' src="{{url_for('static',filename='home/js/home.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div style="height: 300px;  width: 100%; background-color: rgb(94, 19, 107);"></div>
+<h1>Главная</h1>
+
+{% include "my_slider/slider.html" %}
+
+<div style="height: 300px;  width: 100%; background-color: rgb(58, 151, 39);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(130, 44, 139);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(129, 161, 12);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(57, 21, 117);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(50, 7, 7);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(94, 19, 107);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(58, 151, 39);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(130, 44, 139);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(129, 161, 12);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(57, 21, 117);"></div>
+<div style="height: 300px;  width: 100%; background-color: rgb(50, 7, 7);"></div>
+{{ slider_images}}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+						
