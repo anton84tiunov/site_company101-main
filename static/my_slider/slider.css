@@ -6,7 +6,8 @@
 
 #slider_container{
     width: 100%;
-    height: var(--slider-height);
+    /* height: var(--slider-height); */
+    height: auto;
     /* background-color: rgb(255, 0, 208); */
 }
 #slider_cards{
@@ -23,6 +24,7 @@
     /* padding: 10px; */
     width: 80vw;
     height: 60vw;
+    /* height: auto; */
     overflow: hidden;
     /* transition: background 0.8s ease; */
     /* transition: 0.8s; */
@@ -83,8 +85,9 @@
 }
 
 
+/* vdC87nbCAeXTz* */
 
-
+/* ssh root@89.223.122.101 */
 
 
 

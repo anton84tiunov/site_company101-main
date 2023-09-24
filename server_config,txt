@@ -1,0 +1,292 @@
+
+/* naUYA-B9rJZm7w */
+
+/* ssh root@91.186.198.81 */
+ssh web_master@91.186.198.81
+
+89.223.122.101:3344
+
+
+sudo adduser  web_master
+
+pass Testo123#
+usermod -aG sudo web_master
+
+
+sudo mkdir -p /var/www/test_domen/html
+sudo chown -R $USER:$USER /var/www/test_domen/html
+sudo chmod -R 755 /var/www/test_domen
+nano /var/www/test_domen/html/index.html
+
+
+<html>
+    <head>
+        <title>Welcome to test_domen!</title>
+    </head>
+    <body>
+        <h1>Success!  The test_domen server block is working!</h1>
+    </body>
+</html>
+
+sudo nano /etc/nginx/sites-available/test_domen
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/test_domen/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name test_domen www.test_domen;
+
+    location / {
+            try_files $uri $uri/ =404;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/test_domen /etc/nginx/sites-enabled/
+
+sudo nano /etc/nginx/nginx.conf
+
+python3 -m venv my_venv
+source my_venv/bin/activate
+pip install wheel
+pip install gunicorn flask
+nano main_app.py
+sudo ufw allow 5000
+python main_app.py
+
+
+from main_app import app
+
+if __name__ == "__main__":
+    app.run()
+
+gunicorn --bind 0.0.0.0:5000 wsgi:app
+
+sudo nano /etc/systemd/system/company_101.service
+
+
+
+[Unit]
+Description=Gunicorn instance to serve site_company101-main.
+After=network.target
+
+[Service]
+User=web_master
+Group=www-data
+WorkingDirectory=/home/web_master/my_sites/company_101
+Environment="PATH=/home/web_master/my_sites/company_101/my_venv/bin"
+ExecStart=/home/web_master/my_sites/company_101/my_venv/bin/gunicorn --workers 3 --bind unix:company_101.sock -m 007 wsgi:app
+
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl start company_101
+sudo systemctl stop company_101
+sudo systemctl enable company_101
+sudo systemctl diable company_101
+sudo systemctl status company_101
+
+sudo nano /etc/nginx/sites-available/company_101
+
+
+server {
+    listen 80;
+    server_name 91.186.198.81 www.company_101;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/web_master/my_sites/company_101/company_101.sock;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/company_101 /etc/nginx/sites-enabled
+sudo systemctl restart nginx
+sudo ufw delete allow 5000
+sudo ufw allow 'Nginx Full'
+
+sudo chmod 755 /home/web_master
+
+
+
+scp -r /home/anton/my_projects/python/flask/site_company101-main web_master@91.186.198.81:~/download
+
+
+
+
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Testo123#';
+
+ALTER USER 'db_master'@'localhost' IDENTIFIED WITH auth_socket;
+
+
+CREATE USER 'db_master'@'localhost' IDENTIFIED WITH authentication_plugin BY 'Testo123#';
+ALTER USER 'db_master'@'%' IDENTIFIED WITH mysql_native_password BY 'Testo123#'
+CREATE USER 'db_master'@'localhost' IDENTIFIED BY 'Testo123#';
+CREATE USER 'db_company101'@'%' IDENTIFIED BY '#4jQtv*#R2{8';
+GRANT ALL PRIVILEGES ON company101_db.* TO 'db_company101'@'localhost';
+GRANT ALL PRIVILEGES ON company101_db.* TO 'db_company101'@'%';
+CREATE USER 'db_company101'@'localhost' IDENTIFIED WITH mysql_native_password BY '#4jQtv*#R2{8';
+GRANT ALL PRIVILEGES ON company101_db.* TO 'db_company101'@'localhost';
+CREATE DATABASE company101_db;
+mysql -P 3306 -h 91.186.198.81 -u db_company101 -p mylogin_db
+
+
+mysql -h localhost -u db_company101 -p #4jQtv*#R2{8
+
+
+
+
+
+
+
+
+
+Основные команды 1/2
+
+pwd - вǼводит название текущего рабочего каталога
+cat - вǼводит содержимое одного или несколǽких файлов
+ls - вǼведет переченǽ содержимого каталога
+ls -l - вǼводит детализированнǼй список
+ls -a - вǼводит список со скрǼтǼми файлами и директориȀми
+cd - изменȀет рабочуǿ директориǿ
+cp - копирует файлǼ
+
+
+
+Основные команды 2/2
+
+mv - переименовǼвает файл
+touch - создает файл
+rm - удалȀет файл
+mkdir - создает директориǿ
+rmdir - удалȀет директориǿ
+ln - создает ссǼлку
+echo - вǼводит аргументǼ в стандартнǼй вǼвод
+
+
+
+Полезные команды 1/2
+
+man - руководство полǽзователȀ
+лǿбой командǼ
+df - сколǽко диска исполǽзовано
+du - размер директории
+ps - список процессов
+grep - поиск в потоке ввода
+sudo - вǼполнȀет команду другого
+полǽзовател
+
+systemctl - управлȀет демонами
+less - постраничнǼй вǼвод
+tail - последние 10 строк
+diff - различиȀ между 2 файлами
+file - показǼвает формат файла
+find - вǼполнȀет поиск
+locate - бǼстрǼй поиск по индексу
+
+Полезные команды 2/2
+
+head - первǼе 10 строк
+sort - строки в алфавитном порȀдке
+passwd - менȀет паролǽ полǽзователȀ
+who - информациȀ о подклǿченнǼх
+полǽзователȀх
+telnet - сетевой текстовǼй терминал
+
+iptables - конфигурирует брǾндмауǾр
+Netfilter
+top/htop/atop - менеджерǼ процессов
+chmod - редактор прав
+chown - менȀет владелǽца
+
+
+‘Hello world’ > file
+
+> >
+
+|
+
+command1 && command2
+command1 || command2
+
+направитǽ резулǽтат командǼ в файл, а не терминал
+
+синтаксис перенаправлениȀ, добавит вǼводимǼе даннǼе
+к файлу вместо перезаписи
+
+стандартнǼй вǼвод командǼ на стандартнǼй вход
+другой командǼ
+
+command2 вǼполнȀетсȀ только если статус вǼхода из
+командǼ command1 равен 0
+command2 вǼполнȀетсȀ только если статус вǼхода из
+командǼ command1 неравен 0
+
+
+
+
+scp /home/anton/my_projects/python/flask/site_company101-main.tar.xz root@89.223.122.101/download
+
+
+scp /home/anton/my_projects/python/flask/site_company101-main.tar.xz root@89.223.122.101:/root/download
+
+cp /root/download/site_company101-main.tar.xz /home/my_site/site_company101-main.tar.xz
+
+tar -xf site_company101-main.tar.xz
+
+
+
+
+
+sudo apt install mc
+sudo apt install nano
+
+sudo mkdir -p /var/www/company101/html
+sudo chown -R $USER:$USER /var/www/company101/html
+sudo chmod -R 755 /var/www/company101
+nano /var/www/company101/html/index.html
+<html>
+    <head>
+        <title>Welcome to company101!</title>
+    </head>
+    <body>
+        <h1>Success!  The company101 server block is working!</h1>
+    </body>
+</html>
+sudo nano /etc/nginx/sites-available/company101
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/company101/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name company101 www.company101;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+sudo ln -s /etc/nginx/sites-available/company101 /etc/nginx/sites-enabled/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+aside{
+    margin-top: 100px;
+    background-color: blue;
+    width:  100% ;
+    height: 80vh ;
+    overflow:scroll;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    aside{
+        width:  200px ;
+        height: 80vh;
+        position: fixed;
+ 
+    }
+}

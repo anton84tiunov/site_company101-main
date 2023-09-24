@@ -11,30 +11,16 @@
     {{ super() }}
 
     <script type='text/javascript' src="{{url_for('static',filename='home/js/home.js')}}"></script>
+
 {% endblock %}
 
-{% block content %}
+{% block main %}
 
+<h1>
+    Вас приветствует компания COMPANY101
+</h1>
 
-
-
-<div style="height: 300px;  width: 100%; background-color: rgb(94, 19, 107);"></div>
-<h1>Главная</h1>
-
-{% include "my_slider/slider.html" %}
-
-<div style="height: 300px;  width: 100%; background-color: rgb(58, 151, 39);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(130, 44, 139);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(129, 161, 12);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(57, 21, 117);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(50, 7, 7);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(94, 19, 107);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(58, 151, 39);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(130, 44, 139);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(129, 161, 12);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(57, 21, 117);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(50, 7, 7);"></div>
-{{ slider_images}}
+{# {% include "my_slider/slider.html" %} #}
 
 {% endblock %}
 

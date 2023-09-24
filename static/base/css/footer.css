@@ -7,7 +7,14 @@ footer {
     margin: 0 auto;
     justify-content: space-between;
     display: flex;
-  }
+    margin-left: 0px;
+}
+
+@media (min-width: 768px) {
+  footer{
+        margin-left: 200px;
+    }
+}
 .footer_div{
     margin: 5px;
     padding: 5px;
