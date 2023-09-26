@@ -4,7 +4,7 @@ const data = {
     age: '39'
   };
   
-  fetch('http://localhost:3344/', {
+  fetch('/home_test/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,3 +20,6 @@ const data = {
     .catch((error) => {
       console.log('Error:', error);
     });
+
+
+    // curl -d '{"name":"anton", "age":"39"}' -H "Content-Type: application/json" -X POST http://localhost:3344/

@@ -1,0 +1,75 @@
+asctime: 2023-09-26 01:55:44,475, name: app, levelname: DEBUG, message: logger init
+ ------------------------------
+
+asctime: 2023-09-26 01:55:44,570, name: app, levelname: DEBUG, message: logger init
+ ------------------------------
+
+asctime: 2023-09-26 01:58:37,727, name: app, levelname: DEBUG, message: logger init
+ ------------------------------
+
+asctime: 2023-09-26 02:04:57,375, name: app, levelname: DEBUG, message: name 'ssssss' is not defined
+ ------------------------------
+
+asctime: 2023-09-26 02:16:28,961, name: app, levelname: DEBUG, message: name 'ssssss' is not defined in 66 row:ssssss()
+ ------------------------------
+
+asctime: 2023-09-26 02:20:21,554, name: app, levelname: DEBUG, message: name 'ssssss' is not defined. строка 66 row:ssssss()    /home/anton/my_projects/python/flask/site_company101-main/app.py
+ ------------------------------
+
+asctime: 2023-09-26 02:24:56,182, name: app, levelname: DEBUG, message: сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+asctime: 2023-09-26 02:24:56,652, name: app, levelname: DEBUG, message: сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+asctime: 2023-09-26 02:24:56,652, name: app, levelname: DEBUG, message: сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+asctime: 2023-09-26 02:24:57,161, name: app, levelname: DEBUG, message: сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+asctime: 2023-09-26 02:24:57,161, name: app, levelname: DEBUG, message: сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+asctime: 2023-09-26 02:24:57,161, name: app, levelname: DEBUG, message: сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:28:32,567, app, DEBUG, сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:28:32,781, app, DEBUG, сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:28:32,781, app, DEBUG, сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:28:33,020, app, DEBUG, сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:28:33,020, app, DEBUG, сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:28:33,020, app, DEBUG, сообщение: name 'ssssss' is not defined . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:29:51,197, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:29:51,409, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:29:51,409, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:29:51,726, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:29:51,726, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 02:29:51,726, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+
+ 2023-09-26 22:25:39,500, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
+ ------------------------------
+

@@ -25,6 +25,9 @@ def my_create():
     finally: 
         connection.close()
 
+#  Insert into test_1 (name, age)values ('anton', 39);
+#  Insert into test_1 (name, age)values ('rauan', 26);
+#  Insert into test_1 (name, age)values ('ruslan', 27);
 
 def my_insert():
     connection = getConnection() 

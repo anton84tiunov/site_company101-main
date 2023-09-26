@@ -19,6 +19,17 @@ sudo chmod -R 755 /var/www/test_domen
 nano /var/www/test_domen/html/index.html
 
 
+
+sudo less /var/log/nginx/error.log: проверяет журналы ошибок Nginx.
+sudo less /var/log/nginx/access.log: проверяет журналы доступа Nginx.
+sudo journalctl -u nginx: проверяет журналы процессов Nginx.
+sudo journalctl -u myproject: проверяет журналы Gunicorn вашего
+sudo journalctl -u company_101
+
+
+
+
+
 <html>
     <head>
         <title>Welcome to test_domen!</title>
@@ -101,20 +112,21 @@ server {
         proxy_pass http://unix:/home/web_master/my_sites/company_101/company_101.sock;
     }
 }
-
+Full'
+home
 sudo ln -s /etc/nginx/sites-available/company_101 /etc/nginx/sites-enabled
 sudo systemctl restart nginx
 sudo ufw delete allow 5000
-sudo ufw allow 'Nginx Full'
+sudo ufw allow 'Nginx 
+sudo chmod 755 //web_master
 
-sudo chmod 755 /home/web_master
 
-
+sudo chmod 755 /etc/systemd/system/company_101.service
 
 scp -r /home/anton/my_projects/python/flask/site_company101-main web_master@91.186.198.81:~/download
 
 
-
+sudo systemctl restart nginx
 
 
 
