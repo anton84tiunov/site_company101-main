@@ -1,0 +1,24 @@
+git init
+git add *
+
+git status
+
+git commit -m '1   первый '
+git commit -m '2   '
+git config --global user.name "anton_s@ubuntus"
+
+git commit -m '2   отказалсй от  jquery '
+
+git commit -m '3   добавил blueprints. начал слфйлер '
+
+git commit -m '4   переделал слайдер. теперь картинки биркться с папки и карусель двигается покругу '
+
+git commit -m '5   перешол на новый комп'
+
+git commit -m '6   дабавил  блюпринт админ. добавил соединение с базой данных. добавил aside   main'
+
+
+git commit -m '7   дабавил  логирование'
+
+git commit -m '8   дабавил  форму регистрации'
+

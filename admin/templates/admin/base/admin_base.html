@@ -1,0 +1,17 @@
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type='text/css' rel="stylesheet" href="{{url_for('static',filename='base/css/default_style.css')}}">
+    <link type='text/css' rel="stylesheet" href="{{url_for('.static',filename='admin/css/base/admin_base.css')}}">
+
+  
+{% endblock %}
+{% block body %}
+
+    {% include "admin/base/admin_base_header.html" %}
+
+
+
+    <script type='text/javascript' src="{{url_for('.static',filename='admin/js/base/admin_base.js')}}"></script>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "admin/base/admin_base.html" %}
+{% block head %}
+     {{ super() }}
+    <link type='text/css' rel="stylesheet" href="{{url_for('.static',filename='admin/css/admin_registration.css')}}">
+    <title>Главная</title>
+ 
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <div id="contents">
+        <div id="reg_content">
+            <br>
+            <h1>Страница регистрации</h1>
+            <br>
+            <p>Заполните все поля чтобы зарегистрироваться.</p>
+            <p>После регистрации Админимтратор сайта выдаст вам уровень привелегий .</p>
+            <p>Согласно уровню вам будут доступны возможности изменять контент сайта .</p>
+            <br>
+            <div id="form_reg">
+
+                <div class="col_form_reg">
+                    <div class="row_key">Фамилия: </div>
+                    <div class="row_val"><input type="text" name="reg_usersurname" id="reg_usersurname" placeholder="Фамилия" minlength="2" maxlength="15" pattern="^[A-Za-z]{1,15}$" required ></div>
+                    <div class="row_status" id="reg_usersurname_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">Имя: </div>
+                    <div class="row_val"><input type="text" name="reg_username" id="reg_username" placeholder="Имя" minlength="2" maxlength="15" pattern="^[A-Za-z]{1,15}$" required ></div>
+                    <div class="row_status" id="reg_username_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">Отчество: </div>
+                    <div class="row_val"><input type="text" name="reg_userpatronymic" id="reg_userpatronymic" placeholder="Отчество" minlength="2" maxlength="15" pattern="^[A-Za-z]{1,15}$" required ></div>
+                    <div class="row_status" id="reg_userpatronymic_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">Телефон: </div>
+                    <div class="row_val"><input type="text" name="reg_userphone" id="reg_userphone" placeholder="Телефон" minlength="11" maxlength="11"  pattern="^8[0-9]{10}$" required ></div>
+                    <div class="row_status" id="reg_userphone_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">День р.: </div>
+                    <div class="row_val"><input type="date" name="reg_userdate_birth" id="reg_userdate_birth" placeholder="День р."  pattern="[0-9]{2}\.[0-9]{2}\.[0-9]{4}" required ></div>
+                    <div class="row_status" id="reg_userdate_birth_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">Почта: </div>
+                    <div class="row_val"><input type="email" name="reg_useremail" id="reg_useremail" placeholder="Почта"  minlength="5" maxlength="30"  pattern="^[a-z0-9.]{1,20}@[a-z0-9.]{1,10}$"  required ></div>
+                    <div class="row_status" id="reg_useremail_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">Логин: </div>
+                    <div class="row_val"><input type="text" name="reg_userlogin" id="reg_userlogin" placeholder="Логин" minlength="2" maxlength="15" pattern="^[a-zA-Z0-9_]{1,15}$"  required ></div>
+                    <div class="row_status" id="reg_userlogin_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">Пароль: </div>
+                    <div class="row_val"><input type="password" name="reg_pass1" id="reg_pass1" placeholder="Пароль" minlength="8" maxlength="20" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$"  required ></div>
+                    <div class="row_status" id="reg_userpass1_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_key">Еще раз ароль: </div>
+                    <div class="row_val"><input type="password" name="reg_pass2" id="reg_pass2" placeholder="Пароль" minlength="8" maxlength="20" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$"  required ></div>
+                    <div class="row_status" id="reg_userpass2_status"></div>
+                </div>
+
+                <div class="col_form_reg">
+                    <div class="row_val"><input type="button" name="reg_submit" id="reg_submit"" value="Отправить"></div>
+                    <div class="row_status" id="reg_user_submit_status"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src="{{url_for('.static',filename='admin/js/admin_registration.js')}}"></script>
+
+{% endblock %}
+
+
+<!-- user_id int  PRIMARY KEY AUTO_INCREMENT,
+                 user_name VARCHAR(20) NOT NULL,
+                 user_patronymic VARCHAR(20) NOT NULL,
+                 user_surname VARCHAR(20) NOT NULL,
+                 user_phone VARCHAR(20) NOT NULL,
+                 user_date_birth DATE NOT NULL,
+                 user_email VARCHAR(50) UNIQUE NOT NULL,
+                 user_login VARCHAR(50) UNIQUE NOT NULL,
+                 user_password TINYBLOB NOT NULL,
+                 user_access_level int DEFAULT 1,
+                 user_date_time_reg DATETIME DEFAULT CURRENT_TIMESTAMP -->
+
+

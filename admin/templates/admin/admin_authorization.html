@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type='text/css' rel="stylesheet" href="{{url_for('static',filename='admin/css/admin_authorization.css')}}">
+{% extends "admin/base/admin_base.html" %}
+{% block head %}
+     {{ super() }}
+    <link type='text/css' rel="stylesheet" href="{{url_for('.static',filename='admin/css/admin.css')}}">
     <title>Авторизация</title>
-</head>
-<body>
-    <H1>авторизуйтесь</H1>
+ 
+{% endblock %}
 
-    <script type='text/javascript' src="{{url_for('static',filename='admin/js/admin_authorization.js')}}"></script>
-</body>
-</html>
+{% block body %}
+    {{ super() }}
+
+        <p>tvgtrgrtgrtgvrtgt5rgtrgtrgt5r</p>
+    <script type='text/javascript' src="{{url_for('.static',filename='admin/js/admin.js')}}"></script>
+
+{% endblock %}
+
+
+

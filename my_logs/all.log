@@ -73,3 +73,68 @@ asctime: 2023-09-26 02:24:57,161, name: app, levelname: DEBUG, message: сооб
  2023-09-26 22:25:39,500, app, DEBUG, сообщение: << name 'ssssss' is not defined >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 66 .  где: ssssss()
  ------------------------------
 
+ 2023-09-26 22:48:24,655, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}]
+ ------------------------------
+
+ 2023-09-26 22:49:19,145, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}]
+ ------------------------------
+
+ 2023-09-26 22:49:19,145, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}]
+ ------------------------------
+
+ 2023-09-27 00:23:01,232, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 00:59:18,005, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:04:55,415, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:31:48,800, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:31:52,803, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:31:52,803, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:32:01,438, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:32:01,438, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:32:01,438, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:35:25,036, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:35:25,924, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:35:25,924, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:54:11,684, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:56:16,452, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:56:16,452, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:58:43,939, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:58:43,939, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-27 23:58:43,939, app, DEBUG, [{'name': 'grade', 'age': 2000}, {'name': 'grade', 'age': 2000}] .
+ 
+ 2023-09-30 10:18:57,159, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 78 .  где: data = db.my_querys() .
+ 
+ 2023-09-30 10:56:52,809, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-09-30 10:57:03,490, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-09-30 10:57:03,490, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-09-30 11:02:41,263, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-09-30 11:02:41,263, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-09-30 11:02:41,263, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-09-30 13:26:23,757, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-10-01 09:20:16,016, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-10-01 17:47:34,587, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
