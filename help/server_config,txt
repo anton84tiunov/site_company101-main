@@ -26,8 +26,8 @@ sudo journalctl -u nginx: проверяет журналы процессов N
 sudo journalctl -u myproject: проверяет журналы Gunicorn вашего
 sudo journalctl -u company_101
 
-
-
+scp /home/anton/my_projects/python/flask/site_company101.tar.xz anton@192.168.1.100:/my_sites
+/my_sites$ tar xf site_company101.tar.xz 
 
 
 <html>
@@ -101,10 +101,15 @@ sudo systemctl diable company_101
 sudo systemctl status company_101
 
 sudo nano /etc/nginx/sites-available/company_101
-
+  ssl_certificate /etc/ssl/company_101/ssl_key.key
+#    ssl_certificate_key /etc/ssl/company_101/ssl_crt.crt
 
 server {
     listen 80;
+    listen 443 default ssl;
+    ssl on;
+    ssl_certificate /home/web_master/my_sites/company_101/ssl/flutter_flask.key
+    ssl_certificate_key /home/web_master/my_sites/company_101/ssl/flutter_flask.crt
     server_name 91.186.198.81 www.company_101;
 
     location / {
@@ -112,12 +117,16 @@ server {
         proxy_pass http://unix:/home/web_master/my_sites/company_101/company_101.sock;
     }
 }
-Full'
+Full
 home
 sudo ln -s /etc/nginx/sites-available/company_101 /etc/nginx/sites-enabled
 sudo systemctl restart nginx
 sudo ufw delete allow 5000
-sudo ufw allow 'Nginx 
+sudo ufw allow Nginx 
+
+
+
+sudo chmod 755 /etc/ssl/company_101
 sudo chmod 755 //web_master
 
 

@@ -6,7 +6,7 @@ pip install Flask
 pip install flask-jwt-extended
 pip install pymysql
 pip install cryptography
-pip install loguru
+
 pip install Flask-SSLify
 pip install redis
 

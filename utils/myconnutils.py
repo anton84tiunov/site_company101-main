@@ -2,6 +2,7 @@ import sys
 import pymysql
 import pymysql.cursors;
 import datetime;
+import utils.my_loging as base_loger
 
 def getConnection(): 
     connection = pymysql.connect(host='localhost',
@@ -73,10 +74,59 @@ def create_product():
         connection.close()
 
 
+def insert_user(user_surname, user_name, user_patronymic, user_phome,\
+    user_date_birth, user_email, user_login, user_password):
+    bool = 0
+    user_access_level = 0
+    connection = getConnection() 
+    try :
+        cursor = connection.cursor()   
+        sql =  """Insert into users (user_name, user_patronymic, user_surname, user_phone,
+            user_date_birth, user_email, user_login, user_password, user_access_level) 
+            values (%s, %s, %s, %s, %s, %s, %s, %s, %s) """
+        cursor.execute(sql, (user_name, user_patronymic, user_surname, user_phome,\
+            user_date_birth, user_email, user_login, user_password, user_access_level) ) 
+        connection.commit() 
+        bool = 1
+    except Exception as e:
+        str_err = base_loger.msg_except(e)
+        base_loger.set_log("app", str_err)
+        e = sys.exc_info()[1]
+        if e.args[1].find("Duplicate entry") > -1 and e.args[1].find("users.user_email") > -1:
+            bool = 2
+        elif e.args[1].find("Duplicate entry") > -1 and e.args[1].find("users.user_login") > -1:
+            bool = 3
+        else:
+            bool = 4
+        print(e.args[1])
+    finally: 
+        connection.close()
+        return bool
 
 
+# определяет хэш пароля пользователя если он существует
 
-
+def select_user_password(user_login):
+    row = ''
+    connection = getConnection() 
+    try :
+        cursor = connection.cursor()   
+        sql =  """Select user_password from users Where user_login=%s """
+        cursor.execute(sql, (user_login) ) 
+        connection.commit() 
+        # print('cursor')
+        for row in cursor:
+            row = row["user_password"]
+    except Exception as e:
+        str_err = base_loger.msg_except(e)
+        base_loger.set_log("app", str_err)
+        e = sys.exc_info()[1]
+        print('e.args[1]', e.args[1])
+        row = 'error'
+    finally: 
+        connection.close()
+        # print('row', type(row), row)
+        return row
 
 
 

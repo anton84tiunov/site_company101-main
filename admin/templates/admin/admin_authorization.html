@@ -1,16 +1,46 @@
 {% extends "admin/base/admin_base.html" %}
 {% block head %}
      {{ super() }}
-    <link type='text/css' rel="stylesheet" href="{{url_for('.static',filename='admin/css/admin.css')}}">
+    <link type='text/css' rel="stylesheet" href="{{url_for('.static',filename='admin/css/admin_authorization.css')}}">
     <title>Авторизация</title>
  
 {% endblock %}
 
 {% block body %}
     {{ super() }}
+    <div id="contents">
+        <div id="auth_content">
+            <br>
+            <h1>Страница авторизации</h1>
+            <br>
+            <p>Заполните все поля чтобы авторизоваться.</p>
+            <p>  .</p>
+            <p> .</p>
+            <br>
+            <div id="form_auth">
 
-        <p>tvgtrgrtgrtgvrtgt5rgtrgtrgt5r</p>
-    <script type='text/javascript' src="{{url_for('.static',filename='admin/js/admin.js')}}"></script>
+                <div class="col_form_auth">
+                    <div class="row_key">Логин: </div>
+                    <div class="row_val"><input type="text" name="auth_userlogin" id="auth_userlogin" placeholder="Логин" minlength="2" maxlength="15" pattern="^[a-zA-Z0-9_]{1,15}$"  required ></div>
+                    <div class="row_status" id="auth_userlogin_status"></div>
+                </div>
+
+                <div class="col_form_auth">
+                    <div class="row_key">Пароль: </div>
+                    <div class="row_val"><input type="password" name="auth_pass1" id="auth_pass1" placeholder="Пароль" minlength="8" maxlength="20" pattern="^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$"  required ></div>
+                    <div class="row_status" id="auth_userpass1_status"></div>
+                </div>
+
+                <div class="col_form_auth">
+                    <div class="row_val"><input type="button" name="auth_submit" id="auth_submit"" value="Отправить"></div>
+                    <div class="row_status" id="auth_user_submit_status"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src="{{url_for('.static',filename='admin/js/admin_authorization.js')}}"></script>
 
 {% endblock %}
 

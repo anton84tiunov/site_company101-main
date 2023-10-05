@@ -138,3 +138,19 @@ asctime: 2023-09-26 02:24:57,161, name: app, levelname: DEBUG, message: сооб
  
  2023-10-01 17:47:34,587, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
  
+ 2023-10-02 00:11:39,045, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 
+ 2023-10-02 21:33:37,626, app, DEBUG, сообщение: << (1062, "Duplicate entry 'srrdrd@fcftftvgvf' for key 'users.user_email'") >> . файл: /home/anton/my_projects/python/flask/site_company101-main/my_venv/lib/python3.10/site-packages/pymysql/err.py  . строка: 143 .  где: raise errorclass(errno, errval) .
+ 
+ 2023-10-02 21:40:40,754, app, DEBUG, сообщение: << (1062, "Duplicate entry 'drdr@rfyhh' for key 'users.user_email'") >> . файл: /home/anton/my_projects/python/flask/site_company101-main/my_venv/lib/python3.10/site-packages/pymysql/err.py  . строка: 143 .  где: raise errorclass(errno, errval) .
+ 
+ 2023-10-02 21:40:40,754, app, DEBUG, сообщение: << (1062, "Duplicate entry 'drdr@rfyhh' for key 'users.user_email'") >> . файл: /home/anton/my_projects/python/flask/site_company101-main/my_venv/lib/python3.10/site-packages/pymysql/err.py  . строка: 143 .  где: raise errorclass(errno, errval) .
+ 
+ 2023-10-02 21:46:22,331, app, DEBUG, сообщение: << (1062, "Duplicate entry 'y6gy@5ftg6tfr' for key 'users.user_email'") >> . файл: /home/anton/my_projects/python/flask/site_company101-main/my_venv/lib/python3.10/site-packages/pymysql/err.py  . строка: 143 .  где: raise errorclass(errno, errval) .
+ 
+ 2023-10-02 22:08:42,180, app, DEBUG, сообщение: << (1062, "Duplicate entry 'ftftt@ededed' for key 'users.user_email'") >> . файл: /home/anton/my_projects/python/flask/site_company101-main/my_venv/lib/python3.10/site-packages/pymysql/err.py  . строка: 143 .  где: raise errorclass(errno, errval) .
+ 
+ 2023-10-02 22:08:42,180, app, DEBUG, сообщение: << (1062, "Duplicate entry 'ftftt@ededed' for key 'users.user_email'") >> . файл: /home/anton/my_projects/python/flask/site_company101-main/my_venv/lib/python3.10/site-packages/pymysql/err.py  . строка: 143 .  где: raise errorclass(errno, errval) .
+ 
+ 2023-10-05 07:59:08,176, app, DEBUG, сообщение: << module 'utils.myconnutils' has no attribute 'my_querys' >> . файл: /home/anton/my_projects/python/flask/site_company101-main/app.py  . строка: 105 .  где: data = db.my_querys() .
+ 

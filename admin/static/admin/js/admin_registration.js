@@ -84,7 +84,7 @@ function validate_userdate_birth(userdate_birth) {
     return regex.test(userdate_birth);
   }
 function validate_useremail(email) {
-    const regex = /^[a-z0-9.]{2,20}@[a-z0-9.]{2,10}$/;
+    const regex = /^[a-z0-9.]{2,20}@[a-z0-9.]{2,20}$/;
     return regex.test(email);
   }
 function validate_userlogin(userlogi) {
@@ -201,9 +201,22 @@ function submit_reg(date){
       })
         .then((response) => response.json())
         .then((data) => {
-            var d = JSON.stringify(data);
-            alert(d["status"]);
-            window.location.href = '/adm/auth/';
+            var status = data["status"];
+            if (status == 1) {
+                alert("Вы успешно зарегистрировались \n переходим на страницу авторизации");
+                window.location.href = '/adm/auth/';
+            }else if (status == 2){
+                alert("почта используется");
+            }else if (status == 3){
+                alert("логие используется");
+            }else if (status == 4){
+                alert("ошибка базы данных");
+            }else if (status == 5){
+                alert("не прошол валидацию на сервере");
+            }else{
+                alert("ошибка сервера");
+            }
+
         })
         .catch((error) => {
             alert("error");
@@ -220,7 +233,7 @@ reg_button_submit.addEventListener("click", function(e) {
     reg_get_values();
     console.log(val_to_json());
     var v_d = valid_data()
-    if(v_d == 0){
+    if(v_d === 0){
         submit_reg(val_to_json());
     }else{
         alert(`у вас ${v_d} ошибок`)

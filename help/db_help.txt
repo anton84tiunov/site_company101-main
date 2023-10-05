@@ -1,5 +1,5 @@
 ssh web_master@91.186.198.81
-
+ssh db_master@91.186.198.81
 sudo mysql
 
 show databases;
@@ -7,8 +7,27 @@ show databases;
 use company101_db;
 
 show tables;
+TRUNCATE TABLE users;
 
 
+SHOW DATABASES; - список баз данных
+SHOW TABLES [FROM db_name]; -  список таблиц в базе 
+SHOW COLUMNS FROM таблица [FROM db_name]; - список столбцов в таблице
+SHOW CREATE TABLE users; - показать структуру таблицы в формате "CREATE TABLE"
+SHOW INDEX FROM users; - список индексов
+SHOW GRANTS FOR user [FROM db_name]; - привилегии для пользователя.
+
+
+SHOW VARIABLES; - значения системных переменных
+SHOW [FULL] PROCESSLIST; - статистика по mysqld процессам
+SHOW STATUS; - общая статистика
+SHOW TABLE STATUS [FROM db_name]; - статистика по всем таблицам в базе
+
+
+ALTER TABLE users ADD COLUMN user_phone int NOT NULL;
+
+
+ALTER TABLE users MODIFY COLUMN user_phone VARCHAR(20) NOT NULL;
 
 
 CREATE TABLE users(
@@ -16,6 +35,7 @@ CREATE TABLE users(
                  user_name VARCHAR(20) NOT NULL,
                  user_patronymic VARCHAR(20) NOT NULL,
                  user_surname VARCHAR(20) NOT NULL,
+                 user_phone VARCHAR(20) NOT NULL,
                  user_date_birth DATE NOT NULL,
                  user_email VARCHAR(50) UNIQUE NOT NULL,
                  user_login VARCHAR(50) UNIQUE NOT NULL,
