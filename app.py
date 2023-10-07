@@ -16,64 +16,68 @@ from utils.config import *;
 import utils.myconnutils as db;
 import utils.my_loging as base_loger
 from flask import Blueprint
+from utils.my_fabrics import create_app, My_app_flask
 
-from about.about import About
-from contacts.contacts import Contacts
-from market.market import Market
-from services.services import Services
-from work.work import Work
-from search.search import Search
-from useful.useful import Useful
+# from about.about import About
+# from contacts.contacts import Contacts
+# from market.market import Market
+# from services.services import Services
+# from work.work import Work
+# from search.search import Search
+# from useful.useful import Useful
+# # from admin.admin import Admin
 # from admin.admin import Admin
-from admin.admin import Admin
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-app.config.from_object(FlaskConfig)
-app.config.from_object(JWTConfig)
-jwt = JWTManager(app)
+# app = create_app()
+app = My_app_flask()
+# app = my_app_flask.app()
+# app.config.from_object(FlaskConfig)
+# app.config.from_object(JWTConfig)
+# jwt = JWTManager(app)
 # context = ('./ssl/flutter_flask.crt', './ssl/flutter_flask.key')
-sslify = SSLify(app)
+# sslify = SSLify(app)
 
 
-app.register_blueprint(Contacts, url_prefix='/con')
-app.register_blueprint(About, url_prefix='/about')
-app.register_blueprint(Market, url_prefix='/mark')
+# app.register_blueprint(Contacts, url_prefix='/con')
+# app.register_blueprint(About, url_prefix='/about')
 # app.register_blueprint(Market, url_prefix='/mark')
-app.register_blueprint(Services, url_prefix='/serv')
-app.register_blueprint(Work, url_prefix='/work')
-app.register_blueprint(Search, url_prefix='/sear')
-app.register_blueprint(Useful, url_prefix='/usef')
-app.register_blueprint(Admin, url_prefix='/adm')
+# # app.register_blueprint(Market, url_prefix='/mark')
+# app.register_blueprint(Services, url_prefix='/serv')
+# app.register_blueprint(Work, url_prefix='/work')
+# app.register_blueprint(Search, url_prefix='/sear')
+# app.register_blueprint(Useful, url_prefix='/usef')
+# app.register_blueprint(Admin, url_prefix='/adm')
 
 
-# Настройте наше соединение Redis для хранения заблокированных токенов. Вы, вероятно,
-# хотите, чтобы ваш экземпляр redis был настроен на сохранение данных на диск, чтобы перезагрузка
-# не заставляет ваше приложение забывать, что JWT был отозван.
-jwt_redis_blocklist = redis.StrictRedis(
-    host="localhost", port=6379, db=0, decode_responses=True
-)
+# # Настройте наше соединение Redis для хранения заблокированных токенов. Вы, вероятно,
+# # хотите, чтобы ваш экземпляр redis был настроен на сохранение данных на диск, чтобы перезагрузка
+# # не заставляет ваше приложение забывать, что JWT был отозван.
+# jwt_redis_blocklist = redis.StrictRedis(
+#     host="localhost", port=6379, db=0, decode_responses=True
+# )
 
-# Функция обратного вызова для проверки наличия JWT в черном списке Redis
-@jwt.token_in_blocklist_loader
-def check_if_token_is_revoked(jwt_header, jwt_payload: dict):
-    jti = jwt_payload["jti"]
-    token_in_redis = jwt_redis_blocklist.get(jti)
-    return token_in_redis is not None
+# # Функция обратного вызова для проверки наличия JWT в черном списке Redis
+# @jwt.token_in_blocklist_loader
+# def check_if_token_is_revoked(jwt_header, jwt_payload: dict):
+#     jti = jwt_payload["jti"]
+#     token_in_redis = jwt_redis_blocklist.get(jti)
+#     return token_in_redis is not None
 
 
-# Конечная точка для отзыва токена доступа текущего пользователя. Сохраните уникальные JWT
-# идентификатор (jti) в redis. Также установите время жизни (TTL) при сохранении JWT.
-# чтобы он автоматически удалялся из Redis после истечения срока действия токена.
-@app.route("/logout", methods=["DELETE"])
-@jwt_required()
-def logout():
-    jti = get_jwt()["jti"]
-    try:
-        jwt_redis_blocklist.set(jti, "", ex=JWTConfig.JWT_ACCESS_TOKEN_EXPIRES)
-        return jsonify(msg="Access token revoked", status=1)
-    except:
-        return jsonify(msg="Access token mot revoked", status=0)
+# # Конечная точка для отзыва токена доступа текущего пользователя. Сохраните уникальные JWT
+# # идентификатор (jti) в redis. Также установите время жизни (TTL) при сохранении JWT.
+# # чтобы он автоматически удалялся из Redis после истечения срока действия токена.
+# @app.route("/logout", methods=["DELETE"])
+# @jwt_required()
+# def logout():
+#     jti = get_jwt()["jti"]
+#     try:
+#         jwt_redis_blocklist.set(jti, "", ex=JWTConfig.JWT_ACCESS_TOKEN_EXPIRES)
+#         return jsonify(msg="Access token revoked", status=1)
+#     except:
+#         return jsonify(msg="Access token mot revoked", status=0)
 
 
 

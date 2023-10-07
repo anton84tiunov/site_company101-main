@@ -9,6 +9,9 @@ import utils.myconnutils as db;
 import utils.my_loging as base_loger
 import redis
 
+from utils.config import *;
+from utils.my_fabrics import create_app
+
 from werkzeug.datastructures import ImmutableMultiDict
 # from flask_jwt_extended import create_access_token, create_refresh_token,  get_jwt_identity, jwt_required, JWTManager
 
@@ -16,7 +19,10 @@ from werkzeug.datastructures import ImmutableMultiDict
 
 Admin = Blueprint('admin', __name__,
                           template_folder='templates', static_folder='static')
+# app = create_app()
 
+# Admin.config.from_object(JWTConfig)
+# e
 
 @Admin.route('/')
 def admin():
@@ -85,22 +91,18 @@ def authorization_user():
         request_data = request.get_json()
         login = request_data['login']
         password = request_data['pass']
-        # print(request_data)
         if login == None or login == '' or len(login) < 2 or not re.fullmatch("[A-Za-z0-9]{2,}", login)\
                 or password == None or password == ''  or len(password) < 8 :
             return jsonify({'status': 5})
 
         db_pass = db.select_user_password(login)
-        # print("db_pass", type(db_pass), db_pass)
         if db_pass == '':
             return jsonify({'status': 3})
         salt_db = db_pass[:32]
         key_db = db_pass[32:]
         if key_db == 'error':
             return jsonify({'status': 4})
-        # print(key_db)
         key_brow = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt_db, 83)
-        # print("key_brow", type(key_brow), key_brow)
         if key_db == key_brow:
             access_token = create_access_token(identity=login)
             refresh_token = create_refresh_token(identity=login)
