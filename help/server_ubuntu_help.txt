@@ -1,0 +1,152 @@
+sudo apt install net-tools
+ifconfig
+sudo nano /etc/netplan/00-installer-config.yaml
+
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: true
+    enp0s9:
+      dhcp4: no
+      addresses: [192.168.1.111/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4, 192.168.1.1]
+  version: 2
+
+sudo netplan apply
+sudo -i
+passwd
+Testo123!
+
+
+
+
+
+adduser web_master
+Testo123@
+usermod -aG sudo web_master
+
+
+ssh web_master@192.168.1.111
+sudo apt update
+sudo apt install nginx
+
+sudo ufw app list
+sudo ufw allow 'Nginx HTTP'
+sudo ufw status
+
+systemctl status nginx
+
+curl -4 icanhazip.com
+http://192.168.1.111/
+
+sudo systemctl stop nginx
+sudo systemctl start nginx
+sudo systemctl restart nginx
+sudo systemctl reload nginx
+sudo systemctl disable nginx
+sudo systemctl enable nginx
+
+sudo apt update
+sudo apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+
+sudo apt install python3-venv
+
+mkdir ~/company_101
+cd ~/company_101
+
+python3 -m venv my_venv
+source my_venv/bin/activate
+pip install whee
+pip install gunicorn flask
+
+nano ~/company_101/company_101.py
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
+
+
+
+sudo ufw allow 5000
+
+python company_101.py
+
+http://192.168.1.111:5000
+
+
+nano ~/company_101/wsgi.py
+
+from company_101 import app
+
+if __name__ == "__main__":
+    app.run()
+
+gunicorn --bind 0.0.0.0:5000 wsgi:app
+
+deactivate
+
+sudo nano /etc/systemd/system/company_101.service
+
+
+[Unit]
+Description=Gunicorn instance to serve company_101
+After=network.target
+
+[Service]
+User=web_master
+Group=www-data
+WorkingDirectory=/home/web_master/company_101
+Environment="PATH=/home/web_master/company_101/my_venv/bin"
+ExecStart=/home/web_master/company_101/my_venv/bin/gunicorn --workers 3 --bind unix:company_101.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl start company_101
+sudo systemctl enable company_101
+sudo systemctl status company_101
+
+sudo nano /etc/nginx/sites-available/company_101
+
+server {
+    listen 80;
+    server_name 192.168.1.111 www.company_101;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/web_master/company_101/company_101.sock;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/company_101 /etc/nginx/sites-enabled
+
+sudo nginx -t
+sudo systemctl restart nginx
+
+
+sudo ufw delete allow 5000
+sudo ufw allow 'Nginx Full'
+
+sudo chmod 755 /home/web_master
+
+
+
+
+
+
+
+
+
+
+
+
+
+

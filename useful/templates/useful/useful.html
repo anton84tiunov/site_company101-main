@@ -1,31 +1,17 @@
 {% extends "base/base.html" %}
 {% block head %}
      {{ super() }}
-    <link type='text/css' rel="stylesheet" href="{{url_for('static',filename='useful/css/useful.css')}}">
+    <link type='text/css' rel="stylesheet" href="{{url_for('.static',filename='useful/css/useful.css')}}">
     <title>Полезное</title>
 {% endblock %}
 
 {% block body %}
     {{ super() }}
-    <script type='text/javascript' src="{{url_for('static',filename='useful/js/useful.js')}}"></script>
+    <script type='text/javascript' src="{{url_for('.static',filename='useful/js/useful.js')}}"></script>
 {% endblock %}
 
 {% block main %}
 
-
-<div style="height: 300px;  width: 100%; background-color: rgb(94, 19, 107);"></div>
-<h1>Полезное</h1>
-<div style="height: 300px;  width: 100%; background-color: rgb(58, 151, 39);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(130, 44, 139);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(129, 161, 12);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(57, 21, 117);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(50, 7, 7);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(94, 19, 107);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(58, 151, 39);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(130, 44, 139);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(129, 161, 12);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(57, 21, 117);"></div>
-<div style="height: 300px;  width: 100%; background-color: rgb(50, 7, 7);"></div>
 
 
 {% endblock %}

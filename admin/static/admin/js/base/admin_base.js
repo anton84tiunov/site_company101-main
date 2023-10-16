@@ -33,7 +33,7 @@ function setCookie(name, value, options = {}) {
   }
   
   // Пример использования:
-  setCookie('user', 'John', {secure: true, 'max-age': 3600, path: '/adm'});
+  // setCookie('user', 'John', {secure: true, 'max-age': 3600, path: '/adm'});
   
 //   var date = new Date(new Date().getTime() + 60 * 1000); 
 //   document.cookie = "name=val; path=/; expires=" + date.toUTCString();

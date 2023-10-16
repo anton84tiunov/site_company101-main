@@ -24,13 +24,11 @@ def create_app():
     from work.work import Work
     from search.search import Search
     from useful.useful import Useful
-    # from admin.admin import Admin
     from admin.admin import Admin
 
     app.register_blueprint(Contacts, url_prefix='/con')
     app.register_blueprint(About, url_prefix='/about')
     app.register_blueprint(Market, url_prefix='/mark')
-    # app.register_blueprint(Market, url_prefix='/mark')
     app.register_blueprint(Services, url_prefix='/serv')
     app.register_blueprint(Work, url_prefix='/work')
     app.register_blueprint(Search, url_prefix='/sear')
@@ -60,18 +58,17 @@ class My_app_flask(Flask):
       from work.work import Work
       from search.search import Search
       from useful.useful import Useful
-      # from admin.admin import Admin
       from admin.admin import Admin
 
+      self.register_blueprint(Admin, url_prefix='/adm')
       self.register_blueprint(Contacts, url_prefix='/con')
       self.register_blueprint(About, url_prefix='/about')
       self.register_blueprint(Market, url_prefix='/mark')
-      # app.register_blueprint(Market, url_prefix='/mark')
       self.register_blueprint(Services, url_prefix='/serv')
       self.register_blueprint(Work, url_prefix='/work')
       self.register_blueprint(Search, url_prefix='/sear')
       self.register_blueprint(Useful, url_prefix='/usef')
-      self.register_blueprint(Admin, url_prefix='/adm')
+      
 
 
 

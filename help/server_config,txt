@@ -306,8 +306,15 @@ sudo ln -s /etc/nginx/sites-available/company101 /etc/nginx/sites-enabled/
 
 
 
+2023/10/11 15:10:32 [crit] 704#704: *1 connect() to unix:/home/anton_serv/my_sites/company_101/company_101.sock failed (13: Permission denied) while connecting to upstream, client: 192.168.1.104, server: 192.168.1.101, request: "GET / HTTP/1.1", upstream: "http://unix:/home/anton_serv/my_sites/company_101/company_101.sock:/", host: "192.168.1.101"
 
+192.168.1.104 - - [11/Oct/2023:15:10:32 +0000] "GET / HTTP/1.1" 502 568 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
 
+Oct 11 01:51:08 ubuntuserv systemd[1]: Starting A high performance web server and a reverse proxy server...
 
+Oct 10 18:33:49 ubuntuserv systemd[1]: Started Gunicorn instance to serve company_101.
+Oct 10 18:33:50 ubuntuserv gunicorn[630]: [2023-10-10 18:33:50 +0000] [630] [INFO] Starting gunicorn 21.2.0
+Oct 10 18:33:50 ubuntuserv gunicorn[630]: [2023-10-10 18:33:50 +0000] [630] [INFO] Listening at: unix:company_101.sock (630)
+Oct 10 18:33:50 ubuntuserv gunicorn[630]: [2023-10-10 18:33:50 +0000] [630] [INFO] Using worker: sync
 
 

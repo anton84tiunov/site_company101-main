@@ -10,7 +10,7 @@ import utils.my_loging as base_loger
 import redis
 
 from utils.config import *;
-from utils.my_fabrics import create_app
+# from utils.my_fabrics import create_app
 
 from werkzeug.datastructures import ImmutableMultiDict
 # from flask_jwt_extended import create_access_token, create_refresh_token,  get_jwt_identity, jwt_required, JWTManager
@@ -75,9 +75,10 @@ def registration_user():
         storage = salt + key 
         # print("storage", type(storage), storage)
 
-        bool = db.insert_user( surname, name, patronymic, phone, datetime.datetime.strptime(datebirth, '%Y-%m-%d').date(), email, login, storage)
+        bool = db.insert_user( surname, name, patronymic, phone, datetime.strptime(datebirth, '%Y-%m-%d').date(), email, login, storage)
         print(type(bool))
         print(bool)
+        base_loger.set_log("app", str(request_data) + str(bool) + "  def registration_user() validation" )
         return jsonify({'status': bool}) 
 
 
@@ -93,10 +94,14 @@ def authorization_user():
         password = request_data['pass']
         if login == None or login == '' or len(login) < 2 or not re.fullmatch("[A-Za-z0-9]{2,}", login)\
                 or password == None or password == ''  or len(password) < 8 :
+            
+            base_loger.set_log("app", str(request_data) + "def authorization_user() validation" )
             return jsonify({'status': 5})
 
         db_pass = db.select_user_password(login)
+
         if db_pass == '':
+
             return jsonify({'status': 3})
         salt_db = db_pass[:32]
         key_db = db_pass[32:]
@@ -111,12 +116,14 @@ def authorization_user():
             return jsonify({'status': 2})
 
 
-@Admin.route('/test_jwt', methods=['POST'])
+@Admin.route('/test_jwt/', methods=['POST'])
 @jwt_required()
 def test_jwt():
+    current_user = get_jwt_identity()
+    print(current_user)
     request_data = request.get_json()
     print(request_data)
-    return jsonify({'ok?': 'ok ok ok'})
+    return jsonify({ 'ok': current_user})
 
 
 @Admin.route("/refresh_jwt", methods=["POST"])
@@ -129,6 +136,29 @@ def refresh():
     refresh_token = create_refresh_token(identity=identity)
     return jsonify({'status': '1', 'access_token': access_token, 'refresh_token': refresh_token})
 
-    
+
+
+@Admin.errorhandler(401)
+@Admin.errorhandler(404)
+@Admin.errorhandler(405)
+def _handle_api_error(ex):
+    if request.path.startswith('/'):
+
+        print("Custom 401 Error 55555555555555")
+        return jsonify(error=str(ex)), ex.code
+    else:
+        print("Custom 401 Error 55555555555555")
+        return ex
+
+
+# We are using the `refresh=True` options in jwt_required to only allow
+# refresh tokens to access this route.
+# @Admin.route("/refresh", methods=["POST"])
+# @jwt_required(refresh=True)
+# def refresh():
+#     identity = get_jwt_identity()
+#     access_token = create_access_token(identity=identity)
+#     return jsonify(access_token=access_token)
+
 # db_pass     <class 'bytes'> b'.\x1bd\xa2.\xbb\xa6BQ\xcd\x83.\xef\xe1Yw\x05\xf8\x98\xdb\xdd\xbc\xa2P\x8a\xb8\xe0\xc2\xa8\xc1R\xfd\xf9\xf8\xd12\xe19\xab>\xb8.q(\xc3o\xe43W,\x1c\x13s\x85\x02M/\x84\\,0\x90n\xb8'
 # key_brow    <class 'bytes'> b'\xf9\xf8\xd12\xe19\xab>\xb8.q(\xc3o\xe43W,\x1c\x13s\x85\x02M/\x84\\,0\x90n\xb8'

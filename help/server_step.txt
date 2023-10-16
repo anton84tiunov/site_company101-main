@@ -1,0 +1,229 @@
+ssh anton@192.168.1.101
+
+
+######################################################
+                    mysql
+######################################################
+
+
+https://www.cherryservers.com/blog/how-to-install-and-configure-mysql-on-ubuntu-20-04
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt install mysql-server
+
+mysql --version
+
+systemctl is-active mysql
+
+sudo mysql_secure_installation
+
+sudo mysql
+
+CREATE USER 'db_master'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'Testo123#';
+CREATE USER 'bd_master'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Testo123#';
+
+GRANT  ALTER, CREATE, DELETE, DROP, INSERT, REFERENCES, RELOAD, SELECT, UPDATE ON *.* TO 'db_master'@'localhost' WITH GRANT OPTION;
+GRANT  ALTER, CREATE, DELETE, DROP, INSERT, REFERENCES, RELOAD, SELECT, UPDATE ON *.* TO 'bd_master'@'localhost' WITH GRANT OPTION;
+
+exit
+mysql -u db_master -p
+exit
+mysql -u bd_master -p
+
+
+Создайте новую таблицу с именем Breakfast с помощью этой команды:
+CREATE DATABASE breakfast;
+Далее мы создадим таблицу блюд в базе данных завтраков. С помощью этой команды мы добавим в базу данных столбцы «сэндвич» и столбцы описания, использующие тип данных varchar:
+CREATE TABLE breakfast.food (sandwich VARCHAR(20), description VARCHAR(255));
+Теперь давайте создадим новую строку в базе данных с помощью инструкции INSERT INTO SQL:
+INSERT INTO breakfast.food(sandwich, description) VALUES ('Pepper and Egg', 'The absolute best sandwich ever');
+Просмотрите все строки нашей таблицы с помощью этой команды:
+SELECT * FROM breakfast.food;
+Вывод должен выглядеть так:
+
+mysql> SELECT * FROM breakfast.food;
++----------------+---------------------------------+
+| sandwich       | description                     |
++----------------+---------------------------------+
+| Pepper and Egg | The absolute best sandwich ever |
++----------------+---------------------------------+
+1 row in set (0.00 sec)
+
+mysql>
+Теперь, когда мы закончили наши тесты, давайте удалим нашу breakfastбазу данных с помощью этой команды:
+DROP database breakfast;
+
+Показать все базы данных
+SHOW DATABASES;
+#Показать все таблицы в базе данных
+USE your_database_name;
+SHOW TABLES;
+#Просмотреть всех пользователей MySQL
+USE mysql;
+SELECT user FROM user;
+#Просмотр привилегий пользователя MySQL
+Замените имя пользователя на желаемое имя пользователя:
+
+SHOW GRANTS  FOR 'username'@'localhost';
+#Удаление пользователя MySQL
+Замените имя пользователя на желаемое имя пользователя.
+DROP USER 'username'@'localhost';
+
+######################################################
+                sudo user
+######################################################
+
+
+Создание нового пользователя
+
+sudo adduser web_master
+sudo adduser www_master
+
+Testo123#
+
+sudo usermod -aG sudo web_master
+sudo usermod -aG sudo www_master
+
+######################################################
+                nginx gunicorn flask
+######################################################
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-22-04
+
+
+sudo apt update
+
+sudo apt install nginx
+
+
+sudo apt update
+sudo apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+
+sudo apt install python3-venv
+
+
+mkdir ~/my_sites
+mkdir ~/my_sites/company_101
+cd ~/my_sites/company_101
+python3 -m venv my_venv
+source my_venv/bin/activate
+
+
+pip install wheel
+pip install gunicorn flask
+
+nano ~/my_sites/company_101/my_app.py
+
+sudo ufw allow 5000
+
+python my_app.py
+
+http://192.168.1.101:5000/
+
+nano ~/my_sites/company_101/wsgi.py
+
+
+from my_app import app
+
+if __name__ == "__main__":
+    app.run()
+
+gunicorn --bind 0.0.0.0:5000 wsgi:app
+
+deactivate
+
+sudo nano /etc/systemd/system/company_101.service
+
+[Unit]
+Description=Gunicorn instance to serve company_101
+After=network.target
+
+[Service]
+User=anton_serv
+Group=www-data
+WorkingDirectory=/home/anton_serv/my_sites/company_101
+Environment="PATH=/home/anton_serv/my_sites/company_101/my_venv/bin"
+ExecStart=/home/anton_serv/my_sites/company_101/my_venv/bin/gunicorn --workers 3 --bind unix:company_101.sock -m 007 my_app:app
+
+[Install]
+WantedBy=multi-user.target
+
+
+sudo systemctl start company_101
+sudo systemctl enable company_101
+
+sudo systemctl restart company_101
+
+sudo systemctl status company_101
+
+######################################################
+            Настройка Nginx для прокси-запросов
+######################################################
+
+
+sudo nano /etc/nginx/sites-available/company_101
+
+server {
+    listen 80;
+#    listen 443 default ssl;
+#    ssl on;
+#    ssl_certificate /home/anton_serv/my_sites/company_101/ssl/flutter_flask.key
+#    ssl_certificate_key /home/anton_serv/my_sites/company_101/ssl/flutter_flask.crt
+    server_name 192.168.1.101 company_101;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/anton_serv/my_sites/company_101/company_101.sock;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/company_101 /etc/nginx/sites-enabled
+
+sudo rm /etc/nginx/sites-enabled/company_101
+
+sudo ln -sf /etc/nginx/sites-available/company_101 /etc/nginx/sites-enabled
+
+sudo nginx -t
+
+sudo systemctl restart nginx
+sudo ufw delete allow 5000
+sudo ufw allow 'Nginx Full'
+
+sudo chmod 755 /home/anton_serv/my_sites/
+
+sudo usermod -a -G www-data anton_serv
+
+sudo less /var/log/nginx/error.log: проверяет журналы ошибок Nginx.
+sudo less /var/log/nginx/access.log: проверяет журналы доступа Nginx.
+sudo journalctl -u nginx: проверяет журналы процессов Nginx.
+sudo journalctl -u company_101: проверяет журналы Gunicorn вашего приложения Flask.
+
+
+
+
+
+
+2023/10/12 01:57:38 [crit] 1322#1322: *1 connect() to unix:/home/anton_serv/my_sites/company_101/company_101.sock failed (13: Permission denied) while connecting to upstream, client: 192.168.1.104, server: 192.168.1.101, request: "GET / HTTP/1.1", upstream: "http://unix:/home/anton_serv/my_sites/company_101/company_101.sock:/", host: "192.168.1.101"
+2023/10/12 01:57:43 [crit] 1322#1322: *1 connect() to unix:/home/anton_serv/my_sites/company_101/company_101.sock failed (13: Permission denied) while connectin/var/log/nginx/error.log
+
+
+anton_serv@ubuntuserv:~$ ls my_sites/company_101/
+company_101.sock  my_app.py  my_venv  __pycache__  wsgi.py
+anton_serv@ubuntuserv:~$ 
+
+
+
+
+Oct 12 18:41:51 ubuntuserv systemd[1]: nginx.service: Stopping timed out. Terminating.
+Oct 12 18:41:51 ubuntuserv systemd[1]: nginx.service: Failed with result 'timeout'.
+Oct 12 18:41:51 ubuntuserv systemd[1]: Stopped A high performance web server and a reverse proxy server.
+Oct 12 18:41:51 ubuntuserv systemd[1]: Starting A high performance web server and a reverse proxy server...
+Oct 12 18:41:51 ubuntuserv nginx[1281]: nginx: [warn] conflicting server name "192.168.1.101" on 0.0.0.0:80, ignored
+Oct 12 18:41:51 ubuntuserv nginx[1282]: nginx: [warn] conflicting server name "192.168.1.101" on 0.0.0.0:80, ignored
+Oct 12 18:41:51 ubuntuserv systemd[1]: Started A high performance web server and a reverse proxy server.
+~
+
+curl --post301 'http://0.0.0.0:80'
+
+curl --post301 'http://192.168.1.101:80'

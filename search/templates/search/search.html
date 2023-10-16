@@ -1,13 +1,13 @@
 {% extends "base/base.html" %}
 {% block head %}
      {{ super() }}
-    <link type='text/css' rel="stylesheet" href="{{url_for('static',filename='search/css/search.css')}}">
+    <link type='text/css' rel="stylesheet" href="{{url_for('.static',filename='search/css/search.css')}}">
     <title>Поиск</title>
 {% endblock %}
 
 {% block body %}
     {{ super() }}
-    <script type='text/javascript' src="{{url_for('static',filename='search/js/search.js')}}"></script>
+    <script type='text/javascript' src="{{url_for('.static',filename='search/js/search.js')}}"></script>
 {% endblock %}
 
 {% block main %}

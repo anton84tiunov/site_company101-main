@@ -92,13 +92,13 @@ function submit_auth(date){
 
             if (status == 1) {
                 alert("Вы успешно авторизовались \n переходим на страницу  админки");
-                setCookie('access_token', data["access_token"], {secure: true, 'max-age': 1200, path: '/localhost:3344/adm/'});
-                setCookie('refresh_token', data["refresh_token"], {secure: true, 'max-age': 86400, path: '/localhost:3344/adm/'});
+                setCookie('access_token', data["access_token"], {'max-age': 1200, path: '/'});
+                setCookie('refresh_token', data["refresh_token"], {'max-age': 86400, path: '/'});
                 
                 alert(getCookie('access_token'));
                 alert(getCookie('refresh_token'));
                 
-                window.location.href = '/adm/';
+                // window.location.href = '/adm/';
                 
             }else if (status == 2){
                 alert("неверный пароль");
@@ -135,6 +135,41 @@ auth_button_submit.addEventListener("click", function(e) {
     }
 
 
+
+
+});
+
+var test_btn_1 = document.querySelector("#test_btn_1");
+
+test_btn_1.addEventListener("click", function(e) {
+    
+    var test_date = {'access_token': getCookie('access_token'), 'refresh_token': getCookie('refresh_token')}
+
+    // const myHeaders = new Headers();
+
+        // myHeaders.append('Content-Type', 'application/json');
+        // myHeaders.append('Authorization', '1234abcd');
+console.log(typeof getCookie("access_token"))
+console.log( getCookie("access_token"))
+
+    fetch('/adm/test_jwt/', {
+        method: 'POST',
+        headers: {
+            // 'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + getCookie("access_token")
+        },
+        body: test_date,
+      })
+        .then((response) => response.json())
+        .then((test_date) => {
+            console.log(test_date)
+
+        })
+        .catch((error) => {
+            alert("error");
+          console.log('Error:', error);
+        });
 
 
 });
